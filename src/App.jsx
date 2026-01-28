@@ -3,9 +3,12 @@ import { useState } from 'react'
 const Statisticline = ({text, value}) =>{
   
   return(
-    <div>
-      {text}: {value}
-    </div>
+    
+      
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
   )
 }
 
@@ -29,13 +32,16 @@ const Statistics = ({good,neutral,bad,total}) => {
       <div>
         
         <h1>statistics</h1>
-        <Statisticline text="good" value={good} />
-        <Statisticline text="neutral" value={neutral} />
-        <Statisticline text="bad" value={bad} />
-        <Statisticline text="all" value={total} />
-        <Statisticline text="average" value={(good-bad)/total} />
-        <Statisticline text="positive" value={(good/total)*100} />
-    
+        <table>
+          <tbody>
+          <Statisticline text="good" value={good} />
+          <Statisticline text="neutral" value={neutral} />
+          <Statisticline text="bad" value={bad} />
+          <Statisticline text="all" value={total} />
+          <Statisticline text="average" value={(good-bad)/total} />
+          <Statisticline text="positive" value={(good/total)*100+ '%'}/>
+          </tbody>
+        </table>  
       
       </div>
     )
@@ -68,7 +74,6 @@ const App = () => {
     setBad(updatedBad)
     setTotal(good+neutral+updatedBad)
   }
-  console.log('Totalfin',total)
   return (
     <div>
       <h1>give feedback</h1><br />
